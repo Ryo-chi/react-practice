@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useCallback } from 'react'
+import { useCallback, useEffect} from 'react'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Main } from '../components/Main'
@@ -15,6 +15,13 @@ export default function Home() {
     e.preventDefault();
     alert(foo);
   }, []);
+  useEffect(() => {
+    document.body.style.backgroundColor = "lightblue" 
+    return () => {
+     document.body.style.backgroundColor = "" 
+    }
+   }, []);
+ 
   return (
 
 
@@ -25,7 +32,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <a href="/about"onClick={handleClick}>
+      <a href="/about"
+      onClick={handleClick}
+      >
        ボタン
       </a>
      
