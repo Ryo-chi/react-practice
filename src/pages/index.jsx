@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useCallback, useEffect} from 'react'
+import { useCallback, useEffect, useState} from 'react'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Main } from '../components/Main'
@@ -8,19 +8,20 @@ import styles from '../styles/Home.module.css'
 
 
 export default function Home() {
-  
-  const foo = 1;
-  const handleClick = useCallback((e) => {
-    console.log(e.target.href);
-    e.preventDefault();
-    alert(foo);
-  }, []);
+  const [count, setCount] = useState(1)
+  // let foo = 1;
+  const handleClick = (e) => {
+    setCount((count) => count +1);
+    // foo = foo + 1;
+    
+  };
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue" 
     return () => {
      document.body.style.backgroundColor = "" 
     }
    }, []);
+   console.log(count);
  
   return (
 
@@ -32,11 +33,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <a href="/about"
+      <h1>{count}</h1>
+      <button href="/about"
       onClick={handleClick}
       >
        ボタン
-      </a>
+      </button>
      
       <Main page="index"/>
       <Footer />
