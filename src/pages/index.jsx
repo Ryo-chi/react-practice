@@ -12,12 +12,13 @@ export default function Home() {
   const [text, setText] =useState("")
   const [isShow, setIsShow]=useState(true)
   const handleDisplay =useCallback(() => {
-    setIsShow((isshow) => !isShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   },[]);
+
   const handleClick = useCallback(() => {
     console.log(count);
     if(count < 10) {
-      setCount((count) => count +1);
+      setCount((prevCount) => prevCount +1);
       
     }
   },[count]);
